@@ -1,0 +1,39 @@
+{
+  "id": "s2-compat-autonomous-control-r2",
+  "mode": "autonomous",
+  "objective": "Repair the slugify function so that all supplied compatibility tests pass without changing the tests.",
+  "acceptance_criteria": [
+    "Whitespace and punctuation runs normalize to one hyphen.",
+    "Leading and trailing separators are removed.",
+    "Existing underscore and Unicode behavior is preserved.",
+    "Empty and punctuation-only inputs produce an empty slug.",
+    "All tests in test_slugify.py pass unchanged."
+  ],
+  "workspace": "workspaces/s2-compat-autonomous-control-r2",
+  "fixture": "fixtures/slugify-compat",
+  "rules": [
+    "rules/control.md"
+  ],
+  "allowed_paths": [
+    "slugify.py"
+  ],
+  "read_only_paths": [
+    "test_slugify.py"
+  ],
+  "context_paths": [],
+  "required_tests": [
+    {
+      "name": "unit",
+      "command": ["python3", "-m", "unittest", "-v"],
+      "timeout_seconds": 60
+    }
+  ],
+  "max_attempts": 3,
+  "max_changed_files": 1,
+  "max_changed_lines": 80,
+  "allow_new_files": false,
+  "review": {
+    "required": true,
+    "reviewer": "human"
+  }
+}

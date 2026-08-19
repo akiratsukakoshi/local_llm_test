@@ -124,14 +124,16 @@ The current harness enforces:
 
 - task, rule, fixture, and workspace paths stay inside their Stage 2 areas;
 - implementation workspaces must be clean standalone Git repositories;
-- protected paths cannot change;
+- protected paths cannot change before or after approved tests run;
 - every changed path must match `allowed_paths`;
 - new files are blocked unless the contract explicitly permits them;
 - changed file and line totals have fixed upper bounds;
 - `git diff --check` must pass;
 - only test commands written by the task author are executed;
+- test-created out-of-scope changes block the run;
 - test processes have timeouts;
 - attempts have a fixed upper bound;
+- start, finish, and monotonic wall-clock duration are recorded;
 - approval is separate from implementation.
 
 The model is not given a general shell tool. Aider is called non-interactively with shell suggestions disabled, and the outer harness runs declared test commands itself.

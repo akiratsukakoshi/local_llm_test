@@ -1,0 +1,30 @@
+diff --git a/__pycache__/slugify.cpython-312.pyc b/__pycache__/slugify.cpython-312.pyc
+index be0c417fa50785fd4fe5e3d7666b417306df73b7..e449815e7a39eee38ef54c0651bda829e21364a9 100644
+GIT binary patch
+delta 220
+zcmbQv`i_<FG%qg~0}!laYRyt$oXD5Lcxz&D$i$gCj4Tsp=rXgWuuc4?%g8=ih0#EZ
+zIi^_q7o%<!dvsh(c}#I^6{~Kwkxp$De_V8oZhWkE4TMs;#W1;?QGqdX@(f0G_453p
+z?BasN<kVvQVk6z;{M>@X65YholKi~<-2BpFph#XxQGU+kYm9R2;XsEpFg%&e$E2)$
+zhnu(GtkZ0Q#ti2LBA2<<8eE_v7lc$6B&|@n%&k9JpD9R;jZtEP@&^VWHADFeh$`X*
+GngRe^s6(y*
+
+delta 186
+zcmaFII-Qm8G%qg~0}$L}Y|Z+~Fp)2Xbq$a=eKI4X!o=wYj4TspX*08?uuN8A)MaFw
+z9K>j#%pVsWqZ=QqT?3(1ZZT9b#}sS-V$`i-kB*Bek139wyoOPM(R1=yMs@MD%!-oI
+zqSRvj;+)d-%(P0~<ow)%#FEL<Omb4LK${vEo^bQ_n{}F95K>u?v_j=Fw|;}moyiVN
+c%9A^o0>oGuB_=3;U;t7xl)r$eB3_^-0G;$T>i_@%
+
+diff --git a/slugify.py b/slugify.py
+index b8c8971..fa83157 100644
+--- a/slugify.py
++++ b/slugify.py
+@@ -3,7 +3,8 @@ import re
+
+ def slugify(text: str) -> str:
+     """Convert text into a lowercase, URL-safe slug."""
+-    text = re.sub(r"^[\-_]+|[\-_]+$", "", text)
+     text = re.sub(r"\s+", "-", text)
+     text = re.sub(r"[^\w\s]", "-", text)
++    text = re.sub(r"-{2,}", "-", text)
++    text = re.sub(r"^[\-_]+|[\-_]+$", "", text)
+     return text.lower()
