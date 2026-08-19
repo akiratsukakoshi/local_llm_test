@@ -1,0 +1,36 @@
+{
+  "id": "s2-harness-noop",
+  "mode": "autonomous",
+  "objective": "Exercise the outer retry and failure-recording path without contacting a model.",
+  "acceptance_criteria": [
+    "The unchanged broken fixture continues to fail its tests.",
+    "The harness records exactly two attempts and a tests_failed result."
+  ],
+  "workspace": "workspaces/s2-harness-noop",
+  "fixture": "fixtures/slugify",
+  "rules": [
+    "rules/control.md"
+  ],
+  "allowed_paths": [
+    "slugify.py"
+  ],
+  "read_only_paths": [
+    "test_slugify.py"
+  ],
+  "context_paths": [],
+  "required_tests": [
+    {
+      "name": "unit",
+      "command": ["python3", "-m", "unittest", "-v"],
+      "timeout_seconds": 60
+    }
+  ],
+  "max_attempts": 2,
+  "max_changed_files": 1,
+  "max_changed_lines": 80,
+  "allow_new_files": false,
+  "review": {
+    "required": false,
+    "reviewer": "harness-test"
+  }
+}

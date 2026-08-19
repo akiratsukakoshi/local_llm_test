@@ -1,0 +1,40 @@
+name: CPU validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  stage2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile orchestrator
+        run: python -m compileall -q stage2/orchestrator
+
+      - name: Run unit tests
+        run: python -m unittest discover -s stage2/tests -v
+
+      - name: Validate committed task contracts
+        run: |
+          python -m stage2.orchestrator validate stage2/tasks/smoke-autonomous-control.json
+          python -m stage2.orchestrator validate stage2/tasks/smoke-autonomous.json
+          python -m stage2.orchestrator validate stage2/tasks/smoke-plan.json
+          python -m stage2.orchestrator validate stage2/tasks/smoke-delegated.json
+
+      - name: Check shell syntax
+        run: find scripts stage2/scripts -type f -name '*.sh' -print0 | xargs -0 -n1 bash -n

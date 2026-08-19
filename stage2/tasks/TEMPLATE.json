@@ -1,0 +1,39 @@
+{
+  "id": "s2-example-001",
+  "mode": "delegated",
+  "objective": "Replace this sentence with one bounded implementation objective.",
+  "acceptance_criteria": [
+    "Describe externally observable behavior.",
+    "Describe the required regression protection."
+  ],
+  "workspace": "workspaces/s2-example-001",
+  "fixture": null,
+  "rules": [
+    "rules/common.md",
+    "rules/delegated.md"
+  ],
+  "allowed_paths": [
+    "src/**"
+  ],
+  "read_only_paths": [
+    "tests/**"
+  ],
+  "context_paths": [
+    "README.md"
+  ],
+  "required_tests": [
+    {
+      "name": "unit",
+      "command": ["python3", "-m", "unittest", "discover", "-v"],
+      "timeout_seconds": 120
+    }
+  ],
+  "max_attempts": 3,
+  "max_changed_files": 5,
+  "max_changed_lines": 300,
+  "allow_new_files": false,
+  "review": {
+    "required": true,
+    "reviewer": "upstream-ai"
+  }
+}

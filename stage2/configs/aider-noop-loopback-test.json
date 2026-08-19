@@ -1,0 +1,9 @@
+{
+  "adapter": "aider",
+  "aider_binary": "/usr/bin/true",
+  "model": "openai/noop-test",
+  "api_base": "http://127.0.0.1:18009/v1",
+  "api_key": "local",
+  "edit_format": "whole",
+  "request_timeout_seconds": 10
+}
