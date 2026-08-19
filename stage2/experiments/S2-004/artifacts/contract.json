@@ -1,0 +1,40 @@
+{
+  "id": "s2-smoke-delegated",
+  "mode": "delegated",
+  "objective": "Implement the upstream specification: repair only slugify.py so the existing URL-slug behavior satisfies the protected unit tests.",
+  "acceptance_criteria": [
+    "Normalize every run of whitespace or punctuation separators to one hyphen.",
+    "Remove separators from both ends after normalization.",
+    "Lowercase letters while preserving numeric characters.",
+    "Do not edit test_slugify.py or add dependencies.",
+    "The approved unittest command exits successfully."
+  ],
+  "workspace": "workspaces/s2-smoke-delegated",
+  "fixture": "fixtures/slugify",
+  "rules": [
+    "rules/common.md",
+    "rules/delegated.md"
+  ],
+  "allowed_paths": [
+    "slugify.py"
+  ],
+  "read_only_paths": [
+    "test_slugify.py"
+  ],
+  "context_paths": [],
+  "required_tests": [
+    {
+      "name": "unit",
+      "command": ["python3", "-m", "unittest", "-v"],
+      "timeout_seconds": 60
+    }
+  ],
+  "max_attempts": 3,
+  "max_changed_files": 1,
+  "max_changed_lines": 80,
+  "allow_new_files": false,
+  "review": {
+    "required": true,
+    "reviewer": "upstream-ai"
+  }
+}

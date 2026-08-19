@@ -1,0 +1,21 @@
+{
+  "experiment_id": "S2-006",
+  "contract_id": "s2-smoke-autonomous-r2",
+  "mode": "autonomous",
+  "model": "Qwen3.8-27B-Q4_K_M",
+  "runtime": "llama.cpp b10488 commit 9d77fa1, CUDA 12.8",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "gpu_vram_gb": 24,
+  "adapter": "Aider",
+  "adapter_version": "0.86.2",
+  "attempts": 1,
+  "tests_passed": true,
+  "changed_files": 1,
+  "changed_lines": 7,
+  "gate_violations": [],
+  "prompt_tokens": 1253,
+  "generated_tokens": 1114,
+  "generation_tokens_per_second": 40.08,
+  "review_decision": "request_changes",
+  "task_outcome": "tests_passed_review_failed"
+}

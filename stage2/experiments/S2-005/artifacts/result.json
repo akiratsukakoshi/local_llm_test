@@ -1,0 +1,17 @@
+{
+  "task_id": "s2-smoke-autonomous-control-r2",
+  "mode": "autonomous",
+  "status": "changes_requested",
+  "workspace": "/home/tukapontas/local_llm_test/stage2/workspaces/s2-smoke-autonomous-control-r2",
+  "run_dir": "/home/tukapontas/local_llm_test/stage2/runs/20260819T005122Z-s2-smoke-autonomous-control-r2",
+  "attempts": 1,
+  "tests_passed": true,
+  "review_required": true,
+  "reviewer": "human",
+  "review": {
+    "decision": "request_changes",
+    "reviewer": "codex",
+    "notes": "Declared tests and gates passed in one attempt, but this repeats the control run compatibility regression: removing the initial boundary trim and returning strip(\"-\") no longer strips leading or trailing underscores as the original implementation did. Request changes to preserve that behavior.",
+    "recorded_at": "2026-08-19T00:52:16.793435+00:00"
+  }
+}

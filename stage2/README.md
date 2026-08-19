@@ -42,7 +42,7 @@ stage2/
   experiments/        # promoted, durable experiment summaries
 ```
 
-The project root currently is not a Git repository. Each Stage 2 task workspace is therefore initialized as its own isolated Git repository. This is intentional: gates compare every live change against a known clean fixture commit without altering Stage 1 artifacts.
+The project root is a Git repository. Each Stage 2 task workspace is additionally initialized as its own isolated nested Git repository so gates can compare every live change against a known clean fixture commit without altering project or Stage 1 artifacts.
 
 ## Three modes
 

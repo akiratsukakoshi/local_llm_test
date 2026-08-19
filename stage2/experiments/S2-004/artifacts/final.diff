@@ -1,0 +1,15 @@
+diff --git a/slugify.py b/slugify.py
+index 9e9c1a1..aca27f0 100644
+--- a/slugify.py
++++ b/slugify.py
+@@ -3,8 +3,5 @@ import re
+
+ def slugify(text: str) -> str:
+     """Convert text into a lowercase, URL-safe slug."""
+-    text = re.sub(r"^[\-_]+|[\-_]+$", "", text)
+-    text = re.sub(r"\s+", "-", text)
+-    text = re.sub(r"[^\w\s]", "-", text)
+-    return text.lower()
+-
++    text = re.sub(r"[^0-9A-Za-z]+", "-", text)
++    return text.strip("-").lower()

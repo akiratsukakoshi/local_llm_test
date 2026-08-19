@@ -1,0 +1,17 @@
+{
+  "task_id": "s2-smoke-autonomous-r2",
+  "mode": "autonomous",
+  "status": "changes_requested",
+  "workspace": "/home/tukapontas/local_llm_test/stage2/workspaces/s2-smoke-autonomous-r2",
+  "run_dir": "/home/tukapontas/local_llm_test/stage2/runs/20260819T005216Z-s2-smoke-autonomous-r2",
+  "attempts": 1,
+  "tests_passed": true,
+  "review_required": true,
+  "reviewer": "human",
+  "review": {
+    "decision": "request_changes",
+    "reviewer": "codex",
+    "notes": "All declared tests and gates passed in one attempt, but this stochastic rule-enabled repeat removed the original leading/trailing underscore handling and only strips hyphens. Request changes to preserve existing boundary behavior. Across two rule-enabled runs, one was review-approved and one was not.",
+    "recorded_at": "2026-08-19T00:53:27.998099+00:00"
+  }
+}
