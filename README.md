@@ -22,6 +22,7 @@ RunPodを将来のローカルGPU環境の代替として使い、GPU/VRAM、モ
 - `stage2/PROTOCOL.md`: Aider外側、scratch agent、上位AI分業への進行条件
 - `GIT_WORKFLOW.md`: GitHub運用、実験記録、ブランチ、タグ、データ方針
 - `SECURITY.md`: credential、クラウドGPU、LLM実行の安全境界
+- `CONTRIBUTING.md`: 外部Issue、実験、コード貢献の手順
 
 ## Research stages
 
@@ -115,4 +116,4 @@ GGUF、safetensors、checkpointなどのmodel weightsはGitへコミットしま
 
 ## License
 
-ライセンスはまだ選択されていません。公開リポジトリであっても、明示的なライセンスが追加されるまでは自由利用を許諾するものではありません。
+このプロジェクトはMIT Licenseで公開されています。外部利用、変更、再配布、商用利用を許可します。配布時には著作権表示とライセンス表示を保持してください。詳細は`LICENSE`、貢献手順は`CONTRIBUTING.md`を参照してください。
