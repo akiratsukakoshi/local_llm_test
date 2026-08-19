@@ -10,7 +10,7 @@
 - Fixture commit: `9f28f211ca54ee4bd0c102656613113366a2faa0`
 - Idle VRAM after runs: 16,540 MiB used
 - Generation throughput across six requests: 39.89–40.27 tokens/s
-- RunPod hourly price: pending value from deployment UI
+- RunPod hourly price: USD 0.50/hour (user-reported deployment UI value)
 
 ## Results
 
