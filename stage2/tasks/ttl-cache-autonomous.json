@@ -1,0 +1,40 @@
+{
+  "id": "s2-ttl-cache-autonomous",
+  "mode": "autonomous",
+  "objective": "Diagnose and repair the TTLCache implementation so the supplied tests pass without changing the tests.",
+  "acceptance_criteria": [
+    "Entries expire when the clock reaches their expiry boundary.",
+    "Successful reads and updates refresh least-recently-used order.",
+    "Updating a key resets its TTL without evicting the wrong key.",
+    "Expired entries are removed before capacity eviction.",
+    "Constructor validation, default returns, and all tests remain unchanged."
+  ],
+  "workspace": "workspaces/s2-ttl-cache-autonomous",
+  "fixture": "fixtures/ttl-cache",
+  "rules": [
+    "rules/common.md",
+    "rules/autonomous.md"
+  ],
+  "allowed_paths": [
+    "ttl_cache.py"
+  ],
+  "read_only_paths": [
+    "test_ttl_cache.py"
+  ],
+  "context_paths": [],
+  "required_tests": [
+    {
+      "name": "unit",
+      "command": ["python3", "-m", "unittest", "-v"],
+      "timeout_seconds": 60
+    }
+  ],
+  "max_attempts": 3,
+  "max_changed_files": 1,
+  "max_changed_lines": 100,
+  "allow_new_files": false,
+  "review": {
+    "required": true,
+    "reviewer": "human"
+  }
+}
