@@ -1,0 +1,31 @@
+{
+  "date": "2026-08-18",
+  "model": "Qwen3.8-27B-Q4_K_M",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "thinking_mode_evaluated": "off",
+  "chat_practical_use_threshold_met": true,
+  "chat_depth": "high",
+  "chat_problems_reported": false,
+  "hallucination_accuracy_checked": false,
+  "coding_task": "single-file browser Space Invaders-style game",
+  "initial_prompt": "ブラウザで簡単に動くインベーダーゲームをつくって",
+  "files_created": 1,
+  "result_lines": 294,
+  "result_bytes": 6776,
+  "human_corrections": 0,
+  "playable_first_attempt": true,
+  "three_lives_present": true,
+  "score_present": true,
+  "win_state_present": true,
+  "enemy_projectiles_present": true,
+  "restart_present": true,
+  "best_game_result_in_series": true,
+  "clear_improvement_over_qwen36_27b": true,
+  "overall_practical_use": true,
+  "comparison_limitations": [
+    "single sample",
+    "near-identical rather than identical prompts",
+    "different GGUF conversion source",
+    "greenfield single-file task only"
+  ]
+}

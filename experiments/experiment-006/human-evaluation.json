@@ -1,0 +1,24 @@
+{
+  "date": "2026-08-18",
+  "overall_practical_use": true,
+  "chat": {
+    "thinking_on_quality": "excellent",
+    "thinking_off_quality": "excellent",
+    "intent_understanding": "excellent",
+    "philosophical_dialogue": "highly_interesting",
+    "occasional_errors": true,
+    "hallucinations_independently_verified": false,
+    "model_supplied_sources": true
+  },
+  "coding": {
+    "initial_game_functional": true,
+    "initial_task_completed_without_correction": true,
+    "difficulty_adjustment_requested": true,
+    "difficulty_adjustment_successful_in_one_turn": true,
+    "game_sized_task_practical": true
+  },
+  "purchase_hypothesis": {
+    "single_24gb_gpu_crossed_user_practical_threshold": true,
+    "larger_repository_capability_not_yet_tested": true
+  }
+}

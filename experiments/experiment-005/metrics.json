@@ -1,0 +1,18 @@
+{
+  "status": "setup_in_progress",
+  "task_success": null,
+  "model_download_seconds": 29.4,
+  "checkpoint_load_seconds": null,
+  "api_ready_seconds_from_process_start": null,
+  "smoke_test_elapsed_seconds": null,
+  "observed_active_generation_tokens_per_second": null,
+  "checkpoint_size_gib": 23.25,
+  "steady_vram_mib_min": null,
+  "steady_vram_mib_max": null,
+  "configured_context_tokens": 32768,
+  "max_num_seqs": 1,
+  "gpu_model": "NVIDIA A40",
+  "gpu_vram_mib": 46068,
+  "runpod_total_hourly_cost_usd": 0.44,
+  "approximate_experiment_cost_usd": null
+}

@@ -1,0 +1,17 @@
+{
+  "status": "setup_in_progress",
+  "task_success": null,
+  "model_download_seconds": null,
+  "model_load_seconds": null,
+  "api_ready_seconds_from_process_start": null,
+  "smoke_test_elapsed_seconds": null,
+  "observed_generation_tokens_per_second": null,
+  "model_file_size_bytes": null,
+  "steady_vram_mib": null,
+  "configured_context_tokens": 16384,
+  "max_parallel_sequences": 1,
+  "gpu_model": "NVIDIA GeForce RTX 3090",
+  "gpu_vram_mib": 24576,
+  "runpod_total_hourly_cost_usd": null,
+  "approximate_experiment_cost_usd": null
+}

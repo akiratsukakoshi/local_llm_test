@@ -1,0 +1,23 @@
+{
+  "task_success": "partial",
+  "tests_passing_initial": 1,
+  "tests_passing_final": 3,
+  "tests_total": 5,
+  "human_interventions": 2,
+  "major_mistakes": 3,
+  "unnecessary_changes": 0,
+  "inference_turns": 3,
+  "shell_commands_by_agent": 0,
+  "files_inspected": 2,
+  "files_changed": 1,
+  "test_runs_by_harness": 4,
+  "self_corrections_attempted": 2,
+  "self_corrections_successful": 0,
+  "model_download_seconds": 24.29,
+  "model_load_seconds": 5.72,
+  "cuda_graph_capture_seconds": 7.0,
+  "smoke_test_elapsed_seconds": 0.904,
+  "peak_observed_vram_mib": 22731,
+  "configured_context_tokens": 8192,
+  "runpod_total_hourly_cost_usd": 0.28
+}

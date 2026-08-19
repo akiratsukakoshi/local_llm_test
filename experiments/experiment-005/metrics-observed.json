@@ -1,0 +1,34 @@
+{
+  "status": "api_ready_human_evaluation_pending",
+  "task_success": true,
+  "model_download_seconds": 29.4,
+  "checkpoint_load_seconds": 229.01,
+  "model_load_total_seconds": 238.42,
+  "torch_compile_seconds": 50.09,
+  "initial_profiling_warmup_seconds": 71.9,
+  "api_ready_seconds_from_process_start_approx": 490,
+  "checkpoint_size_gib": 23.25,
+  "model_memory_gib": 22.03,
+  "steady_idle_vram_mib": 39485,
+  "gpu_vram_mib": 46068,
+  "configured_context_tokens": 32768,
+  "max_num_seqs": 1,
+  "smoke_tests": [
+    {
+      "prompt": "やあ、聞こえてる？",
+      "elapsed_seconds": 3.87,
+      "prompt_tokens": 17,
+      "completion_tokens_including_hidden_reasoning": 263
+    },
+    {
+      "prompt": "日本語で、一文だけ自己紹介して。",
+      "elapsed_seconds": 18.96,
+      "prompt_tokens": 19,
+      "completion_tokens_including_hidden_reasoning": 1646
+    }
+  ],
+  "observed_server_generation_tokens_per_second_after_first_request": 17.2,
+  "gpu_model": "NVIDIA A40",
+  "runpod_total_hourly_cost_usd": 0.44,
+  "approximate_experiment_cost_usd": null
+}

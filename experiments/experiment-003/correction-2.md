@@ -1,0 +1,1 @@
+Your previous response changed the regex but the same test still fails with the same output. Make an actual fix now. Inspect how punctuation replacement and whitespace replacement together create repeated hyphens, and ensure separators are collapsed before returning. Do not modify the tests.

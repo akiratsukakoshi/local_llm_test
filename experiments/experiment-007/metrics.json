@@ -1,0 +1,21 @@
+{
+  "task_success": null,
+  "tests_passing": null,
+  "human_interventions": null,
+  "major_mistakes": null,
+  "unnecessary_changes": null,
+  "inference_turns": null,
+  "shell_commands": null,
+  "files_inspected": null,
+  "files_changed": null,
+  "test_runs": null,
+  "self_corrections": null,
+  "model_load_seconds": null,
+  "time_to_first_token_seconds": null,
+  "output_tokens_per_second": null,
+  "total_task_seconds": null,
+  "prompt_tokens": null,
+  "peak_vram_mib": null,
+  "runpod_runtime_hours": null,
+  "runpod_cost_usd": null
+}
