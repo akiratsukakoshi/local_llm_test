@@ -1,0 +1,67 @@
+name: Stage 2 experiment
+description: Define one controlled local coding-agent experiment.
+title: "[S2-NNN] "
+labels: [experiment]
+body:
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Phase
+      options:
+        - Phase 1 — Aider outer harness
+        - Phase 2 — Scratch agent
+        - Phase 3 — High-end planner and local worker
+    validations:
+      required: true
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: State one concrete research question.
+    validations:
+      required: true
+
+  - type: textarea
+    id: variable
+    attributes:
+      label: Main variable and controls
+      description: Name the one major variable changed and what remains fixed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: task
+    attributes:
+      label: Task and acceptance criteria
+      description: Link the task contract or describe the bounded task and tests.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Model, quantization, runtime, context, GPU, VRAM, adapter, and relevant versions.
+    validations:
+      required: true
+
+  - type: textarea
+    id: safety
+    attributes:
+      label: Cost and safety plan
+      description: Current GPU price, expected duration, stop condition, and protected paths/commands.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: readiness
+    attributes:
+      label: Readiness
+      options:
+        - label: The task changes only one major variable where practical.
+          required: true
+        - label: The run will not commit secrets, model weights, raw workspaces, or unreviewed logs.
+          required: true
+        - label: The GPU resource will be started only with explicit user awareness.
+          required: true
