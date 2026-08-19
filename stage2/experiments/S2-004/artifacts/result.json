@@ -1,0 +1,17 @@
+{
+  "task_id": "s2-smoke-delegated",
+  "mode": "delegated",
+  "status": "changes_requested",
+  "workspace": "/home/tukapontas/local_llm_test/stage2/workspaces/s2-smoke-delegated",
+  "run_dir": "/home/tukapontas/local_llm_test/stage2/runs/20260819T004930Z-s2-smoke-delegated",
+  "attempts": 1,
+  "tests_passed": true,
+  "review_required": true,
+  "reviewer": "upstream-ai",
+  "review": {
+    "decision": "request_changes",
+    "reviewer": "codex",
+    "notes": "All declared tests and scope gates passed in one attempt, but the replacement [^0-9A-Za-z]+ narrows the original Unicode-aware \\w behavior to ASCII and silently converts existing non-ASCII letters into separators. This conflicts with the common preservation rule and the specification to lowercase letters. Preserve Unicode letters/numbers or explicitly resolve the compatibility requirement before approval.",
+    "recorded_at": "2026-08-19T00:50:32.489501+00:00"
+  }
+}

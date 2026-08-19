@@ -12,3 +12,7 @@ Use Qwen3.8-27B Q4_K_M, RTX 3090 24GB, llama.cpp, 16K context, Q8 KV cache, Aide
 Rows 1 and 2 are the only direct rule comparison. Rows 3 and 4 test different roles and must not be interpreted as a rule-only comparison.
 
 Repeat stochastic conditions before drawing a strong conclusion. Preserve every run rather than replacing a prior result.
+
+## First execution
+
+Rows 1–4 and one repeat of rows 1–2 ran on 2026-08-19. See `SMOKE_SUITE_2026-08-19.md`. The next suite must add compatibility tests and wall-clock instrumentation before advancing to an unfamiliar bug.

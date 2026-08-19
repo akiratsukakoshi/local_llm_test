@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "changed_files": [
+    "slugify.py"
+  ],
+  "changed_file_count": 1,
+  "changed_lines": 7,
+  "violations": []
+}

@@ -1,0 +1,39 @@
+{
+  "id": "s2-smoke-autonomous-control",
+  "mode": "autonomous",
+  "objective": "Repair the slugify function so that all supplied unit tests pass without changing the tests.",
+  "acceptance_criteria": [
+    "Whitespace runs become one hyphen.",
+    "Punctuation runs become one separator rather than repeated separators.",
+    "Leading and trailing separators are removed.",
+    "Letters are lowercase and numbers are preserved.",
+    "All five tests in test_slugify.py pass unchanged."
+  ],
+  "workspace": "workspaces/s2-smoke-autonomous-control",
+  "fixture": "fixtures/slugify",
+  "rules": [
+    "rules/control.md"
+  ],
+  "allowed_paths": [
+    "slugify.py"
+  ],
+  "read_only_paths": [
+    "test_slugify.py"
+  ],
+  "context_paths": [],
+  "required_tests": [
+    {
+      "name": "unit",
+      "command": ["python3", "-m", "unittest", "-v"],
+      "timeout_seconds": 60
+    }
+  ],
+  "max_attempts": 3,
+  "max_changed_files": 1,
+  "max_changed_lines": 80,
+  "allow_new_files": false,
+  "review": {
+    "required": true,
+    "reviewer": "human"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "s2-smoke-plan",
+  "mode": "plan",
+  "objective": "Inspect the broken slugify implementation and propose a precise repair plan without modifying files.",
+  "acceptance_criteria": [
+    "Identify the processing-order and separator-collapsing problems using repository evidence.",
+    "Name the file that would change and the tests that would validate it.",
+    "Do not modify any file."
+  ],
+  "workspace": "workspaces/s2-smoke-plan",
+  "fixture": "fixtures/slugify",
+  "rules": [
+    "rules/common.md",
+    "rules/planner.md"
+  ],
+  "allowed_paths": [],
+  "read_only_paths": [
+    "slugify.py",
+    "test_slugify.py"
+  ],
+  "context_paths": [],
+  "required_tests": [],
+  "max_attempts": 1,
+  "max_changed_files": 1,
+  "max_changed_lines": 20,
+  "allow_new_files": false,
+  "review": {
+    "required": true,
+    "reviewer": "human"
+  }
+}
