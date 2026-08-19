@@ -1,0 +1,9 @@
+{
+  "adapter": "aider",
+  "aider_binary": "../.venv-aider/bin/aider",
+  "model": "openai/Qwen3.8-27B-Q4_K_M",
+  "api_base": "http://127.0.0.1:8000/v1",
+  "api_key": "local",
+  "edit_format": "whole",
+  "request_timeout_seconds": 900
+}

@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import shutil
 import subprocess
+import time
 from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -14,6 +15,12 @@ from .gates import current_diff, ensure_clean_repository, inspect_changes
 
 def _write_json(path: Path, value: object) -> None:
     path.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def _finish_result(run_dir: Path, result: dict[str, object], started_monotonic: float) -> None:
+    result["finished_at"] = datetime.now(timezone.utc).isoformat()
+    result["wall_time_seconds"] = round(time.monotonic() - started_monotonic, 3)
+    _write_json(run_dir / "result.json", result)
 
 
 def _run_command(command: tuple[str, ...], cwd: Path, timeout: int) -> subprocess.CompletedProcess[str]:
@@ -152,6 +159,8 @@ def run_contract(contract: Contract, config: HarnessConfig, *, dry_run: bool = F
             raise ContractError(f"Rule file does not exist: {rule}")
     ensure_clean_repository(contract.workspace)
 
+    started_at = datetime.now(timezone.utc)
+    started_monotonic = time.monotonic()
     run_dir = _new_run_dir(contract)
     shutil.copy2(contract.source_path, run_dir / "contract.json")
     shutil.copy2(config.source_path, run_dir / "harness-config.json")
@@ -166,6 +175,7 @@ def run_contract(contract: Contract, config: HarnessConfig, *, dry_run: bool = F
         "tests_passed": False,
         "review_required": contract.review.required,
         "reviewer": contract.review.reviewer,
+        "started_at": started_at.isoformat(),
     }
     _write_json(run_dir / "result.json", result)
 
@@ -187,13 +197,13 @@ def run_contract(contract: Contract, config: HarnessConfig, *, dry_run: bool = F
 
         if dry_run:
             result["status"] = "dry_run"
-            _write_json(run_dir / "result.json", result)
+            _finish_result(run_dir, result, started_monotonic)
             return run_dir, result
 
         if adapter_result.returncode != 0:
             result["status"] = "adapter_error"
             result["adapter_returncode"] = adapter_result.returncode
-            _write_json(run_dir / "result.json", result)
+            _finish_result(run_dir, result, started_monotonic)
             return run_dir, result
 
         gate_report = inspect_changes(contract)
@@ -202,7 +212,7 @@ def run_contract(contract: Contract, config: HarnessConfig, *, dry_run: bool = F
             result["status"] = "gate_blocked"
             result["gate_violations"] = list(gate_report.violations)
             (run_dir / "final.diff").write_text(current_diff(contract.workspace), encoding="utf-8")
-            _write_json(run_dir / "result.json", result)
+            _finish_result(run_dir, result, started_monotonic)
             return run_dir, result
 
         if contract.mode == "plan":
@@ -211,7 +221,7 @@ def run_contract(contract: Contract, config: HarnessConfig, *, dry_run: bool = F
                 result["gate_violations"] = ["plan mode produced filesystem changes"]
             else:
                 result["status"] = "awaiting_review" if contract.review.required else "planned"
-            _write_json(run_dir / "result.json", result)
+            _finish_result(run_dir, result, started_monotonic)
             return run_dir, result
 
         failures: list[str] = []
@@ -226,11 +236,20 @@ def run_contract(contract: Contract, config: HarnessConfig, *, dry_run: bool = F
             if test_result.returncode != 0:
                 failures.append(log)
 
+        post_test_gate = inspect_changes(contract)
+        _write_json(run_dir / f"gate-post-test-attempt-{attempt}.json", post_test_gate.to_dict())
+        if not post_test_gate.passed:
+            result["status"] = "gate_blocked"
+            result["gate_violations"] = list(post_test_gate.violations)
+            (run_dir / "final.diff").write_text(current_diff(contract.workspace), encoding="utf-8")
+            _finish_result(run_dir, result, started_monotonic)
+            return run_dir, result
+
         if not failures:
             result["tests_passed"] = True
             result["status"] = "awaiting_review" if contract.review.required else "success"
             (run_dir / "final.diff").write_text(current_diff(contract.workspace), encoding="utf-8")
-            _write_json(run_dir / "result.json", result)
+            _finish_result(run_dir, result, started_monotonic)
             return run_dir, result
 
         previous_failure = "\n\n".join(failures)
@@ -238,7 +257,7 @@ def run_contract(contract: Contract, config: HarnessConfig, *, dry_run: bool = F
             result["status"] = "tests_failed"
             result["last_test_failure"] = previous_failure[-12000:]
             (run_dir / "final.diff").write_text(current_diff(contract.workspace), encoding="utf-8")
-            _write_json(run_dir / "result.json", result)
+            _finish_result(run_dir, result, started_monotonic)
             return run_dir, result
 
     raise AssertionError("unreachable")
